@@ -1,0 +1,128 @@
+databaseChangeLog:
+- changeSet:
+    id: 1742081835581-1
+    author: ruslanperederko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_4A
+            name: ID
+            type: BIGINT
+        - column:
+            name: DESCRIPTION
+            type: VARCHAR(255)
+        - column:
+            name: NAME
+            type: VARCHAR(255)
+        tableName: ROLES
+- changeSet:
+    id: 1742081835581-2
+    author: ruslanperederko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_4D
+            name: ID
+            type: BIGINT
+        - column:
+            name: EMAIL
+            type: VARCHAR(255)
+        - column:
+            name: PASSWORD
+            type: VARCHAR(255)
+        - column:
+            name: PHONENUMBER
+            type: VARCHAR(255)
+        tableName: USERS
+- changeSet:
+    id: 1742081835581-3
+    author: ruslanperederko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_A
+            name: ROLES_ID
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_A
+            name: USER_ID
+            type: BIGINT
+        tableName: USERS_ROLES
+- changeSet:
+    id: 1742081835581-4
+    author: ruslanperederko (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: NAME
+        constraintName: CONSTRAINT_4
+        tableName: ROLES
+- changeSet:
+    id: 1742081835581-5
+    author: ruslanperederko (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: USER_ID
+        indexName: FK2O0JVGH89LEMVVO17CBQVDXAA_INDEX_A
+        tableName: USERS_ROLES
+- changeSet:
+    id: 1742081835581-6
+    author: ruslanperederko (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: ROLES_ID
+        indexName: FKA62J07K5MHGIFPP955H37PONJ_INDEX_A
+        tableName: USERS_ROLES
+- changeSet:
+    id: 1742081835581-7
+    author: ruslanperederko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: USER_ID
+        baseTableName: USERS_ROLES
+        constraintName: FK2O0JVGH89LEMVVO17CBQVDXAA
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: USERS
+        validate: true
+- changeSet:
+    id: 1742081835581-8
+    author: ruslanperederko (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: ROLES_ID
+        baseTableName: USERS_ROLES
+        constraintName: FKA62J07K5MHGIFPP955H37PONJ
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: ROLES
+        validate: true
+
